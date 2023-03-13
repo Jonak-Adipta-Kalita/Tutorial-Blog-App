@@ -1,7 +1,7 @@
 type Props = {};
 
 const HomePage = ({}: Props) => {
-  return <div>HomePage</div>;
+  return <div></div>;
 };
 
 export default HomePage;
