@@ -3,8 +3,8 @@ import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./src/schemas";
 import { sanityTheme } from "./src/sanityTheme";
-import StudioNavbar from "./components/studio/StudioNavbar";
-import StudioLogo from "./components/studio/StudioLogo";
+import StudioNavbar from "./src/components/studio/StudioNavbar";
+import StudioLogo from "./src/components/studio/StudioLogo";
 
 export default defineConfig<WorkspaceOptions>({
   basePath: "/studio",
