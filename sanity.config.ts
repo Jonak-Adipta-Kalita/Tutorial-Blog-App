@@ -5,6 +5,7 @@ import { schemaTypes } from "./src/schemas";
 import { sanityTheme } from "./src/sanityTheme";
 import StudioNavbar from "./src/components/studio/StudioNavbar";
 import StudioLogo from "./src/components/studio/StudioLogo";
+import { getDefaultDocumentNode } from "./structure";
 
 export default defineConfig<WorkspaceOptions>({
   basePath: "/studio",
@@ -15,7 +16,12 @@ export default defineConfig<WorkspaceOptions>({
   projectId: "qeepg798",
   dataset: "production",
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [
+    deskTool({
+      defaultDocumentNode: getDefaultDocumentNode,
+    }),
+    visionTool(),
+  ],
 
   schema: {
     types: schemaTypes,
