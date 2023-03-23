@@ -11,28 +11,31 @@ interface Post extends Base {
   body: Block[];
   categories: Category[];
   mainImage: Image;
-  slug: string;
+  slug: Slug;
   title: string;
   description: string;
 }
 
 interface Author extends Base {
   name: string;
-  slug: string;
+  slug: Slug;
   image: Image;
   bio: Block[];
 }
 
-interface Category extends Base {
-  title: string;
-  description: string;
+interface Referrence {
+  _ref: string;
+  _type: "reference";
 }
 
-interface Image extends Base {
-  asset: {
-    _ref: string;
-    _type: "refference";
-  };
+interface Image {
+  _type: "image";
+  asset: Reference;
+}
+
+interface Slug {
+  _type: "slug";
+  current: string;
 }
 
 interface Block {
@@ -45,7 +48,12 @@ interface Block {
 
 interface Span {
   _key: string;
-  _type: string;
+  _type: "span";
   marks: string[];
   text: string;
+}
+
+interface Category extends Base {
+  title: string;
+  description: string;
 }
