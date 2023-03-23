@@ -2,6 +2,8 @@ import { previewData } from "next/headers";
 import { groq } from "next-sanity";
 import { sanityClient } from "../../utils/sanity.client";
 import PreviewSuspense from "../../components/PreviewSuspense";
+import PreviewBlogList from "../../components/PreviewBlogList";
+import BlogList from "../../components/BlogList";
 
 type Props = {};
 
@@ -25,13 +27,13 @@ const HomePage = async ({}: Props) => {
           </div>
         }
       >
-        <div></div>
+        <PreviewBlogList query={query} />
       </PreviewSuspense>
     );
 
   const posts = await sanityClient.fetch(query);
 
-  return <div></div>;
+  return <BlogList posts={posts} />;
 };
 
 export default HomePage;
