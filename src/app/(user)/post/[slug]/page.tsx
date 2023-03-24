@@ -11,6 +11,23 @@ type Props = {
   };
 };
 
+export const revalidate = 30;
+
+export const generateStaticParams = async () => {
+  const query = groq`
+        *[_type == 'post'] {
+            slug
+        }
+    `;
+
+  const posts: { slug: Slug }[] = await sanityClient.fetch(query);
+  const slugRoutes = posts.map((post) => post.slug.current);
+
+  return slugRoutes.map((slugRoute) => ({
+    slug: slugRoute,
+  }));
+};
+
 const PostPage = async ({ params: { slug } }: Props) => {
   const query = groq`
     *[_type == 'post' && slug.current == $slug][0] {
